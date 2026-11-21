@@ -1,0 +1,418 @@
+<div class="nexo-site">
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="Nexo, início"
+        ><span class="brand-mark" aria-hidden="true"><i></i><i></i></span>nexo<span
+          class="brand-dot"
+          >.</span
+        ></a
+      >
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-controls="main-nav"
+        [attr.aria-expanded]="menuOpen()"
+        (click)="menuOpen.set(!menuOpen())"
+      >
+        <app-icon [name]="menuOpen() ? 'close' : 'menu'" /><span>{{
+          menuOpen() ? 'Fechar' : 'Menu'
+        }}</span>
+      </button>
+      <nav id="main-nav" aria-label="Navegação principal" [class.is-open]="menuOpen()">
+        <a href="#solucoes" (click)="menuOpen.set(false)">Soluções</a>
+        <a href="#como-trabalhamos" (click)="menuOpen.set(false)">Como trabalhamos</a>
+        <a href="#sobre" (click)="menuOpen.set(false)">A Nexo</a>
+        <button
+          class="button button-small nav-cta"
+          data-brief-trigger
+          type="button"
+          (click)="start()"
+        >
+          Conte sua ideia
+        </button>
+      </nav>
+    </div>
+  </header>
+  <main id="conteudo">
+    <section class="hero container" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow">Tecnologia com contexto</div>
+        <h1 id="hero-title">Seu próximo<br />passo merece<br /><span>uma boa conexão.</span></h1>
+        <p>
+          Unimos software, dados e inteligência artificial para transformar desafios do seu negócio
+          em soluções que fazem sentido.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="#ponto-de-partida">Encontre seu ponto de partida</a
+          ><a class="text-link" href="#solucoes">Explore as soluções</a>
+        </div>
+        <div class="hero-note">
+          <span class="small-check"><app-icon name="check" /></span>Para pequenas e médias empresas.
+          Em todo o Brasil.
+        </div>
+      </div>
+      <div
+        class="hero-visual"
+        role="img"
+        aria-label="Ilustração de um workspace com painel de dados, site e fluxo de automação. Exemplo conceitual, sem dados reais."
+      >
+        <div class="visual-top-label">
+          <span class="mini-mark" aria-hidden="true">n.</span>Peças diferentes. Um mesmo propósito.
+        </div>
+        <div class="workspace">
+          <div class="workspace-bar">
+            <span class="window-dots"><i></i><i></i><i></i></span
+            ><span>meu negócio / visão geral</span><span class="window-avatar">N</span>
+          </div>
+          <div class="workspace-body">
+            <div class="workspace-side">
+              <span class="side-active"><app-icon name="layers" /></span
+              ><app-icon name="chart" /><app-icon name="message" /><app-icon name="flow" />
+            </div>
+            <div class="dashboard">
+              <div class="dashboard-heading">
+                <div>
+                  <small>Clareza para o próximo passo</small><strong>Uma visão do todo.</strong>
+                </div>
+                <app-icon name="chart" />
+              </div>
+              <div class="dashboard-tabs">
+                <span class="selected">Visão geral</span><span>Operação</span><span>Dados</span>
+              </div>
+              <div class="dashboard-chart">
+                <div class="chart-copy">
+                  <span>Informação conectada</span
+                  ><span class="chart-badge">Visão ilustrativa</span>
+                </div>
+                <div class="bars" aria-hidden="true">
+                  <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                </div>
+                <div class="chart-axis">
+                  <span>Fontes</span><span>Indicadores</span><span>Decisões</span>
+                </div>
+              </div>
+              <div class="dashboard-bottom">
+                <span><i></i>Dados organizados</span><span><i></i>Fluxos conectados</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="site-mini">
+          <div class="mini-browser"><i></i><i></i><i></i></div>
+          <div class="site-mini-body">
+            <span>SUA MARCA</span><strong>Uma presença<br />com propósito.</strong>
+            <div class="mini-button"></div>
+            <div class="mini-site-art"><i></i><i></i></div>
+          </div>
+        </div>
+        <div class="flow-mini">
+          <span class="flow-icon"><app-icon name="flow" /></span>
+          <div><strong>Trabalho conectado</strong><span>Formulário · Sistema · Equipe</span></div>
+          <span class="flow-check"><app-icon name="check" /></span>
+        </div>
+        <span class="visual-caption">Representação conceitual de soluções</span
+        ><app-icon class="visual-spark" name="asterisk" />
+      </div>
+    </section>
+    <div class="capabilities">
+      <div class="container capabilities-inner">
+        <p>Do primeiro site<br /><strong>à operação conectada.</strong></p>
+        <div><app-icon name="globe" />Presença digital</div>
+        <div><app-icon name="layers" />Software sob medida</div>
+        <div><app-icon name="chart" />Dados & IA</div>
+        <div><app-icon name="flow" />Automação</div>
+      </div>
+    </div>
+    <section
+      class="solutions container section-space"
+      id="solucoes"
+      aria-labelledby="solutions-title"
+    >
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">O que podemos construir</span>
+          <h2 id="solutions-title">A solução certa começa<br />pelo seu desafio.</h2>
+        </div>
+        <p>
+          Você não precisa de todas as tecnologias.<br />Precisa das que resolvem o seu problema.
+        </p>
+      </div>
+      <div class="solution-list">
+        @for (solution of solutions; track solution.id) {
+          <article class="solution-row" [class.expanded]="expandedSolution() === solution.id">
+            <h3>
+              <button
+                class="solution-toggle"
+                type="button"
+                [attr.aria-expanded]="expandedSolution() === solution.id"
+                [attr.aria-controls]="'detail-' + solution.id"
+                (click)="toggleSolution(solution.id)"
+              >
+                <span class="solution-icon"><app-icon [name]="solution.icon" /></span
+                ><span class="solution-title">{{ solution.title }}</span
+                ><span class="solution-summary">{{ solution.summary }}</span
+                ><span class="expand-icon"
+                  ><app-icon [name]="expandedSolution() === solution.id ? 'close' : 'plus'"
+                /></span>
+              </button>
+            </h3>
+            <div [id]="'detail-' + solution.id">
+              @if (expandedSolution() === solution.id) {
+                <div class="solution-detail">
+                  <p>{{ solution.description }}</p>
+                  <div>
+                    <span class="detail-label">O que pode fazer parte</span>
+                    <ul>
+                      @for (item of solution.deliverables; track item) {
+                        <li><app-icon name="check" />{{ item }}</li>
+                      }
+                    </ul>
+                    <button class="text-link" type="button" (click)="start(solution.brief)">
+                      Preparar um briefing desta solução
+                    </button>
+                  </div>
+                </div>
+              }
+            </div>
+          </article>
+        }
+      </div>
+      <p class="solution-footnote">
+        <app-icon name="layers" />Soluções independentes, com espaço para se conectar. Você escolhe
+        por onde começar.
+      </p>
+    </section>
+    <section class="finder-section" id="ponto-de-partida" aria-labelledby="finder-title">
+      <div class="container finder-intro">
+        <span class="eyebrow">Um pouco de clareza, antes de começar</span>
+        <h2 id="finder-title">Qual é o seu próximo passo?</h2>
+        <p>
+          Escolha o que mais se parece com o seu momento.<br />A gente sugere uma direção para
+          explorar.
+        </p>
+      </div>
+      <div class="container finder">
+        <div class="finder-inputs">
+          <fieldset>
+            <legend>O que você quer melhorar?</legend>
+            <div class="goal-options">
+              @for (option of goals; track option.id) {
+                <button
+                  type="button"
+                  [attr.data-goal]="option.id"
+                  [attr.aria-pressed]="goal() === option.id"
+                  (click)="goal.set(option.id)"
+                >
+                  <app-icon [name]="option.icon" /><span>{{ option.title }}</span
+                  ><span class="option-indicator" aria-hidden="true">
+                    @if (goal() === option.id) {
+                      <app-icon name="check" />
+                    }
+                  </span>
+                </button>
+              }
+            </div>
+          </fieldset>
+          <label for="situation">E como está a sua estrutura hoje?</label>
+          <div class="select-wrap">
+            <select id="situation" [value]="situation()" (change)="setSituation($event)">
+              <option value="beginning">Começando do zero</option>
+              <option value="scattered">Ferramentas separadas</option>
+              <option value="existing">Uma solução para evoluir</option></select
+            ><app-icon name="chevron" />
+          </div>
+          <p class="finder-note">Suas escolhas ficam apenas nesta página.</p>
+        </div>
+        <div class="finder-result">
+          <span class="result-kicker">Um ponto de partida possível</span>
+          <div class="recommendation" aria-live="polite" aria-atomic="true">
+            <span class="result-icon"><app-icon [name]="recommendation().icon" /></span>
+            <h3>{{ recommendation().title }}</h3>
+            <p>{{ recommendation().context }}</p>
+            <ul>
+              @for (item of recommendation().deliverables; track $index) {
+                <li><app-icon name="check" />{{ item }}</li>
+              }
+            </ul>
+            <div class="complement">
+              <app-icon name="layers" />
+              <p>{{ recommendation().complement }}</p>
+            </div>
+          </div>
+          <button
+            class="button"
+            type="button"
+            data-action="recommended-brief"
+            (click)="start(recommendation().brief)"
+          >
+            Detalhar este ponto de partida</button
+          ><span class="result-disclaimer"
+            >Sugestão inicial. O escopo é definido após entender a demanda.</span
+          >
+        </div>
+      </div>
+    </section>
+    <section
+      class="process container section-space"
+      id="como-trabalhamos"
+      aria-labelledby="process-title"
+    >
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Como trabalhamos</span>
+          <h2 id="process-title">Conversa clara.<br />Construção com direção.</h2>
+        </div>
+        <p>
+          O projeto ganha forma com decisões registradas, entregas definidas e espaço para validar o
+          que está sendo construído.
+        </p>
+      </div>
+      <div class="process-grid">
+        <article>
+          <span class="process-icon"><app-icon name="message" /></span>
+          <h3>Entender antes de propor</h3>
+          <p>
+            Contexto, pessoas, ferramentas e objetivo. Identificamos o problema que vale resolver e
+            o que precisa estar na primeira entrega.
+          </p>
+          <span class="process-output">Resultado: direção e escopo</span>
+        </article>
+        <article>
+          <span class="process-icon"><app-icon name="layers" /></span>
+          <h3>Construir com alinhamento</h3>
+          <p>
+            Transformamos o escopo em interface, código e dados. A comunicação é objetiva, com
+            decisões documentadas e validações combinadas.
+          </p>
+          <span class="process-output">Resultado: solução validada</span>
+        </article>
+        <article>
+          <span class="process-icon"><app-icon name="check" /></span>
+          <h3>Entregar com clareza</h3>
+          <p>
+            Validamos os critérios de aceite e organizamos a entrega. Suporte e próximos passos são
+            definidos conforme a proposta de cada projeto.
+          </p>
+          <span class="process-output">Resultado: continuidade definida</span>
+        </article>
+      </div>
+    </section>
+    <section class="about-section" id="sobre" aria-labelledby="about-title">
+      <div class="container about-layout">
+        <div class="about-copy">
+          <span class="eyebrow">Prazer, somos a Nexo</span>
+          <h2 id="about-title">
+            Gente que entende<br />de tecnologia.<br /><span
+              >E quer entender<br />do seu negócio.</span
+            >
+          </h2>
+          <p>
+            A Nexo nasce da parceria de quatro amigos, com experiências que se complementam e uma
+            ideia em comum: aproximar a tecnologia dos desafios reais das empresas.
+          </p>
+          <p>
+            Na frente técnica, combinamos desenvolvimento de software e inteligência de dados. Na
+            gestão do negócio, contamos também com a visão de sócios com formação em direito e
+            engenharia civil.
+          </p>
+          <span class="about-note">Nossa atuação comercial é em soluções de tecnologia.</span>
+        </div>
+        <div class="people">
+          <article class="person">
+            <span class="avatar">GJ<app-icon name="asterisk" /></span>
+            <div>
+              <span class="person-role">Dados, BI e inteligência artificial</span>
+              <h3>Gleidson Júnior</h3>
+              <p>
+                Experiência sênior em analytics, engenharia e ciência de dados. Conecta a estrutura
+                dos dados às perguntas do negócio.
+              </p>
+              <div class="expertise">
+                <span>Engenharia de dados</span><span>BI</span><span>IA</span>
+              </div>
+            </div>
+          </article>
+          <article class="person">
+            <span class="avatar avatar-pa">PA<app-icon name="asterisk" /></span>
+            <div>
+              <span class="person-role">Software e experiências digitais</span>
+              <h3>Paulo Augusto</h3>
+              <p>
+                Desenvolvimento backend Java e frontend Angular para criar sistemas, aplicativos,
+                sites, chatbots e automações.
+              </p>
+              <div class="expertise">
+                <span>Java</span><span>Angular</span><span>Integrações</span>
+              </div>
+            </div>
+          </article>
+          <div class="team-note">
+            <app-icon name="globe" />
+            <p>
+              Uma equipe remota.<br /><strong>Conectada ao seu contexto, em todo o Brasil.</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="faq container section-space" aria-labelledby="faq-title">
+      <div>
+        <span class="eyebrow">Antes da primeira conversa</span>
+        <h2 id="faq-title">Vamos deixar<br />mais claro.</h2>
+        <p>Algumas respostas para você<br />seguir com mais contexto.</p>
+      </div>
+      <div class="faq-list">
+        @for (faq of faqs; track faq.question) {
+          <details>
+            <summary>
+              {{ faq.question
+              }}<span class="faq-plus" aria-hidden="true"><app-icon name="plus" /></span>
+            </summary>
+            <p>{{ faq.answer }}</p>
+          </details>
+        }
+      </div>
+    </section>
+    <section class="contact-section" aria-labelledby="contact-title">
+      <div class="container contact-inner">
+        <div>
+          <span class="eyebrow">Vamos dar forma ao próximo passo</span>
+          <h2 id="contact-title">Tem um desafio?<br />Comece pela ideia.</h2>
+          <p>
+            Organize o contexto em um briefing simples.<br />Um bom projeto começa com uma boa
+            pergunta.
+          </p>
+        </div>
+        <div class="contact-action">
+          <button class="button" type="button" (click)="start()">Preparar meu briefing</button
+          ><span>Você pode copiar ou baixar.<br />Nenhum dado é enviado automaticamente.</span>
+          <div class="contact-symbol" aria-hidden="true"><i></i><i></i></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <a class="brand" href="#inicio" aria-label="Nexo, voltar ao início"
+          ><span class="brand-mark" aria-hidden="true"><i></i><i></i></span>nexo<span
+            class="brand-dot"
+            >.</span
+          ></a
+        >
+        <p>Conexões que transformam<br />ideias em soluções.</p>
+        <nav aria-label="Navegação do rodapé">
+          <a href="#solucoes">Soluções</a><a href="#como-trabalhamos">Como trabalhamos</a
+          ><a href="#sobre">A Nexo</a>
+        </nav>
+        <a class="footer-top-link" href="#inicio">Voltar ao topo</a>
+      </div>
+      <div class="footer-bottom">
+        <span>© {{ year }} Nexo.</span><span>Feito de pessoas, código e boas conexões.</span
+        ><button type="button" (click)="start()">Organizar uma ideia</button>
+      </div>
+    </div>
+  </footer>
+  <app-brief-dialog />
+</div>

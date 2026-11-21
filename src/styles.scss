@@ -1,0 +1,100 @@
+@use './site';
+@font-face {
+  font-family: 'Jakarta';
+  src: url('/fonts/plus-jakarta.ttf') format('truetype');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --accent: #073d42;
+  --ink: #073d42;
+  --muted: #526c6c;
+  --mint: #e3f2ee;
+  --yellow: #ffc86a;
+  --heading-font: 'Jakarta', Arial, sans-serif;
+  --button-ink: #fff;
+  font-family: 'Jakarta', Arial, sans-serif;
+  color: var(--ink);
+  background: #fbfdfb;
+  font-synthesis: none;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+body {
+  margin: 0;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+button {
+  cursor: pointer;
+  color: inherit;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button:focus-visible,
+a:focus-visible,
+summary:focus-visible,
+select:focus-visible {
+  outline: 3px solid #16827e;
+  outline-offset: 5px;
+}
+::selection {
+  background: #ffc86a;
+  color: #073d42;
+}
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+h1,
+h2,
+h3 {
+  font-family: var(--heading-font);
+}
+svg {
+  display: block;
+}
+.skip {
+  position: fixed;
+  z-index: 100;
+  left: 20px;
+  top: -80px;
+  padding: 14px 20px;
+  background: #073d42;
+  color: #fff;
+  border-radius: 8px;
+}
+.skip:focus {
+  top: 12px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
